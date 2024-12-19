@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
-// Above code also given in the stackBlitz blueprint
 
 let books = [];
 
@@ -57,6 +56,7 @@ app.put('/books/:id', (req, res) => {
 // Delete a book
 app.delete('/books/:id', (req, res) => {
     const bookIndex = books.findIndex(b => b.book_id === req.params.id);
+
     if (bookIndex === -1) {
         return res.status(404).json({ error: 'Book not found.' });
     }
@@ -65,8 +65,8 @@ app.delete('/books/:id', (req, res) => {
     res.status(200).json({ message: 'Book deleted successfully.' });
 });
 
-// Start the server - Given in the stackBlitz blueprint
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
