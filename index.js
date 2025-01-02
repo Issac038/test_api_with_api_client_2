@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 let books = [];
 
-// Create a new book
+
 app.post('/books', (req, res) => {
     const { book_id, title, author, genre, year, copies } = req.body;
 
@@ -23,12 +23,12 @@ app.post('/books', (req, res) => {
     res.status(201).json(newBook);
 });
 
-// Retrieve all books
+
 app.get('/books', (req, res) => {
     res.status(200).json(books);
 });
 
-// Retrieve a specific book by ID
+
 app.get('/books/:id', (req, res) => {
     const book = books.find(b => b.book_id === req.params.id);
 
@@ -39,7 +39,7 @@ app.get('/books/:id', (req, res) => {
     res.status(200).json(book);
 });
 
-// Update a book
+
 app.put('/books/:id', (req, res) => {
     const bookIndex = books.findIndex(b => b.book_id === req.params.id);
 
@@ -53,7 +53,7 @@ app.put('/books/:id', (req, res) => {
     res.status(200).json(updatedBook);
 });
 
-// Delete a book
+
 app.delete('/books/:id', (req, res) => {
     const bookIndex = books.findIndex(b => b.book_id === req.params.id);
 
@@ -65,7 +65,7 @@ app.delete('/books/:id', (req, res) => {
     res.status(200).json({ message: 'Book deleted successfully.' });
 });
 
-// Start the server
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
